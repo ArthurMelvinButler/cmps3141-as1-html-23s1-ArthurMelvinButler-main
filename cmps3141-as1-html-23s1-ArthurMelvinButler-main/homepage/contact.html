@@ -1,0 +1,101 @@
+<!--CMPS3141-HCI - AS1-23S1
+Collaborators:
+Date:
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form - Website Contact Form</title>
+</head>
+<style>
+    #header-tittle, #aboutme-tittle {
+        color: peachpuff;
+    }
+
+    a {
+        color: lightcoral;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: red;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+<body>
+    <header>
+        <h1 id="header-tittle">Contact Form</h1>
+    </header>
+    <!-- Navigation links here-->
+    
+        <table>
+            <tr>
+                <td><a href="./index.html"> Home</a></td>
+                <td><a href="./cv.html"> Curriculum Vitae</a></td>
+
+            </tr>
+        </table>
+        <main>
+            <h3>Contact Form</h3>
+
+            <div class="container">
+                <form action="/action_page.php">
+                    <label for="fname"> Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                    <label for="lname">Email</label>
+                    <input type="text" id="email1" name="email1" placeholder="Your email addres..">
+
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                        <option value="australia">Australia</option>
+                        <option value="canada">Canada</option>
+                        <option value="usa">USA</option>
+                    </select>
+
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; Arthur Butler/ All rights reserved.</p>
+        </footer>
+</body>
+</html>
+

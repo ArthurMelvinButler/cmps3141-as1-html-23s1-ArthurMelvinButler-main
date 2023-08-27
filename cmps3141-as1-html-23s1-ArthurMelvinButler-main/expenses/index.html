@@ -1,0 +1,153 @@
+<!--CMPS3141-HCI - AS1-23S1
+Collaborators:
+Date:
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+	 <meta charset="UTF-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <title>Expense Management App</title>
+	 <style>
+		 body {
+			 font-family: Arial, sans-serif;
+			 margin: 0;
+			 padding: 0;
+			 background-color: #f4f4f4;
+		 }
+		 header {
+			 background-color: #007BFF;
+			 color: white;
+			 padding: 10px;
+			 text-align: center;
+		 }
+		 main {
+			 max-width: 600px;
+			 margin: 0 auto;
+			 padding: 20px;
+			 background-color: white;
+			 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		 }
+		 .transaction-form, .balance-summary {
+			 margin-bottom: 20px;
+			 padding: 10px;
+			 border: 1px solid #ddd;
+		 }
+		 form label {
+			 display: block;
+			 margin-bottom: 5px;
+			 font-weight: bold;
+		 }
+		 form input[type="text"],
+		 form input[type="number"],
+		 form select {
+			 width: 100%;
+			 padding: 8px;
+			 margin-bottom: 10px;
+			 border: 1px solid #ccc;
+			 border-radius: 5px;
+		 }
+		 form button {
+			 background-color: #007BFF;
+			 color: white;
+			 border: none;
+			 padding: 10px 20px;
+			 border-radius: 5px;
+			 cursor: pointer;
+		 }
+		 form button:hover {
+			 background-color: #0056b3;
+		 }
+		 .balance-summary p {
+			 margin: 10px 0;
+		 }
+		 footer {
+			 text-align: center;
+			 padding: 10px;
+			 background-color: #ddd;
+		 }
+
+
+		 .transaction-history {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .transaction-history h3 {
+            margin-top: 0;
+        }
+
+        .transaction-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .transaction-item {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+        }
+	 </style>
+ </head>
+ <body>
+	 <header>
+		 <h1>Expense Management App</h1>
+	 </header>
+	 <main>
+		 <section class="transaction-form">
+			 <h2>Add Transaction</h2>
+			 <form>
+				 <label for="date">Date:</label>
+				 <input type="date" id="date" name="date" value="2023-08-01" disabled>
+				 <br>
+				 <label for="description">Description:</label>
+				 <input type="text" id="description" name="description" value="Food">
+				 <br>
+				 <label for="amount">Amount:</label>
+				 <input type="number" id="amount" name="amount" min="0" value="100">
+				 <br>
+				 <label for="paidBy">Paid By:</label>
+				 <select id="paidBy" name="paidBy">
+					 <option value="neo">Neo</option>
+					 <option value="trinity">Trinity</option>
+				 </select>
+				 <br>
+				 <label for="shared">Shared Expense:</label>
+				 <input type="checkbox" id="shared" name="shared" checked>
+				 <br>
+				 <button type="button">Add Transaction</button>
+			 </form>
+		 </section>
+		 <section class="transaction-history">
+            <h3>Transaction History</h3>
+            <ul class="transaction-list">
+                <li class="transaction-item">
+                    <strong>Date:</strong> 2023-08-01
+                    <br>
+                    <strong>Description:</strong> Groceries
+                    <br>
+                    <strong>Amount:</strong> $50.00
+                    <br>
+                    <strong>Paid By:</strong> Neo
+                    <br>
+                    <strong>Shared Expense:</strong> Yes
+                </li>
+                <!-- Add more transaction items here as needed -->
+            </ul>
+        </section>
+		
+		
+		
+		 <section class="balance-summary">
+			 <h2>Balance Summary</h2>
+			 <p>Neo owes Trinity: $100.00</p>
+			 <p>Trinity owes Neo: $45.00</p>
+		 </section>
+	 </main>
+	 <footer>
+		 <p>&copy; Arthur Butler</p>
+	 </footer>
+ </body>
+ </html>
+ 

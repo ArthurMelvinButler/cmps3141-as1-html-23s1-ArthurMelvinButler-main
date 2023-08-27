@@ -1,0 +1,139 @@
+
+<!--CMPS3141-HCI - AS1-23S1
+Collaborators:
+Date:
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+	 <meta charset="UTF-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <title>grade Calculation </title>
+
+	 <style>
+		 body {
+			 font-family: Arial, sans-serif;
+			 margin: 0;
+			 padding: 0;
+			 display: flex;
+			 justify-content: center;
+			 align-items: center;
+			 min-height: 100vh;
+			 background-color: #f4f4f4;
+		 }
+		 #grade_calc {
+			 background-color: white;
+			 border-radius: 10px;
+			 padding: 20px;
+			 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			 width: 300px;
+		 }
+		 #grade_calc > div {
+			 margin-bottom: 10px;
+		 }
+		 #grade_calc label {
+			 display: inline-block;
+			 width: 100px;
+			 font-weight: bold;
+		 }
+		 button {
+			 background-color: #007BFF;
+			 color: white;
+			 border: none;
+			 padding: 10px 20px;
+			 border-radius: 5px;
+			 cursor: pointer;
+		 }
+		 button:hover {
+			 background-color: #0056b3;
+		 }
+	 </style>
+ </head>
+ <body>
+ 
+ <div id="grade_calc">
+	 <div>
+		 <label for="project">Project:</label>
+		 <input id="project" type="number" min="0" max="100" v-model="assessments.project" /> / 100
+	 </div>
+ 
+	 <div>
+		 <label for="test1">Test 1:</label>
+		 <input id="test1" type="number" min="0" max="100" v-model="assessments.test1" /> / 100
+	 </div>
+ 
+	 <div>
+		 <label for="test2">Test 2:</label>
+		 <input id="test2" type="number" min="0" max="100" v-model="assessments.test2" /> / 100
+	 </div>
+ 
+	 <div v-for="(homework, index) in homeworks" :key="index">
+		 <label for="homework">Homework {{ index + 1 }}:</label>
+		 <input type="number" min="0" max="100" v-model="homework" /> / 100
+	 </div>
+	 <button @click="addHomework()">Add homework</button>
+ 
+	 <div>
+		 <label for="finalExam">Final Exam:</label>
+		 <input id="finalExam" type="number" min="0" max="100" v-model="assessments.finalExam" /> / 100
+	 </div>
+ 
+	 <button @click="calculateGrade()">Calculate</button>
+ 
+	 <div>Projected class grade: {{ calculatedGrade }}</div>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+ <script>
+	 new Vue({
+		 el: '#grade_calc',
+		 data: {
+			 assessments: {
+				 project: 0,
+				 test1: 0,
+				 test2: 0,
+				 finalExam: 0
+			 },
+			 homeworks: []
+		 },
+		 computed: {
+	calculatedGrade() {
+		const test1Weight = 0.1; // 10% for Test 1
+		const test2Weight = 0.1; // 10% for Test 2
+		const homeworkWeight = 0.05; // 5% each for homework (total 5)
+		const projectWeight = 0.25; // 25% for Project
+		const examWeight = 0.3; // 30% for Final Exam
+
+		const totalTestWeight = test1Weight + test2Weight;
+		const totalHomeworkWeight = homeworkWeight * this.homeworks.length; // Use length of homeworks array
+		const totalWeight = totalTestWeight + totalHomeworkWeight + projectWeight + examWeight;
+
+		const test1Score = this.assessments.test1 * test1Weight;
+		const test2Score = this.assessments.test2 * test2Weight;
+		const homeworksTotal = this.homeworks.reduce((total, score) => total + score, 0) * homeworkWeight;
+		const projectScore = this.assessments.project * projectWeight;
+		const examScore = this.assessments.finalExam * examWeight;
+
+		const totalScore = test1Score + test2Score + homeworksTotal + projectScore + examScore;
+		const calculatedGrade = (totalScore / totalWeight) * 100;
+
+		return calculatedGrade.toFixed(2);
+	}
+},
+
+		 methods: {
+			 addHomework() {
+				 if (this.homeworks.length < 5) {
+					 this.homeworks.push(0);
+				 }
+			 },
+			 calculateGrade() {
+				 // Calculate the grade when the Calculate button is clicked
+				 // This will automatically update the calculatedGrade computed property
+			 }
+		 }
+	 });
+ </script>
+ </body>
+ </html>
